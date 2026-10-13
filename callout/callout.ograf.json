@@ -1,0 +1,133 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "pack-callout",
+  "version": "1.0.0",
+  "name": "Callout · point at something",
+  "description": "Label card with a hand-drawn style arrow that draws itself from the card to any point of the frame and lands on a pulsing ring. Set the target in percent of the frame; the card keeps to the safe margins and flips sides when it does not fit. Frame-accurate in post: the same frame on every render, also when scrubbing backwards.",
+  "author": {
+    "name": "Novaire"
+  },
+  "main": "grafico.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": true,
+  "stepCount": 1,
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": 1100
+    },
+    {
+      "type": "updateAction",
+      "duration": 0
+    },
+    {
+      "type": "stopAction",
+      "duration": 450
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "gddType": "single-line",
+        "title": "Label",
+        "default": "Check this setting"
+      },
+      "sub": {
+        "type": "string",
+        "gddType": "single-line",
+        "title": "Small line (italic, accent colour)",
+        "default": "It changes everything"
+      },
+      "targetX": {
+        "type": "number",
+        "title": "Target X (% of frame width)",
+        "default": 62
+      },
+      "targetY": {
+        "type": "number",
+        "title": "Target Y (% of frame height)",
+        "default": 38
+      },
+      "position": {
+        "type": "string",
+        "gddType": "select",
+        "title": "Position (card side of the target) — type: left / right",
+        "enum": [
+          "left",
+          "right"
+        ],
+        "default": "left",
+        "gddOptions": {
+          "labels": {
+            "left": "Left",
+            "right": "Right"
+          }
+        }
+      },
+      "ring": {
+        "type": "string",
+        "gddType": "select",
+        "title": "Pulsing ring at the target — type: yes / no",
+        "enum": [
+          "yes",
+          "no"
+        ],
+        "default": "yes",
+        "gddOptions": {
+          "labels": {
+            "yes": "Yes",
+            "no": "No"
+          }
+        }
+      },
+      "acento": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Accent colour",
+        "default": "#2e5bff"
+      },
+      "tinta": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Ink colour (text, border, shadow)",
+        "default": "#141414"
+      },
+      "superficie": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Card colour",
+        "default": "#fffaf0"
+      },
+      "look": {
+        "type": "string",
+        "gddType": "select",
+        "title": "Look — type: sticker / flat / soft",
+        "enum": [
+          "sticker",
+          "flat",
+          "soft"
+        ],
+        "default": "sticker",
+        "gddOptions": {
+          "labels": {
+            "sticker": "Sticker (tilt + hard shadow)",
+            "flat": "Flat (outline, no shadow)",
+            "soft": "Soft (no outline, soft shadow)"
+          }
+        }
+      }
+    }
+  },
+  "renderRequirements": [
+    {
+      "accessToPublicInternet": {
+        "ideal": false
+      }
+    }
+  ]
+}

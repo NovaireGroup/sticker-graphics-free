@@ -1,0 +1,115 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "pack-chapter-card",
+  "version": "1.0.0",
+  "name": "Chapter card · title card",
+  "description": "Chapter title card with a big outlined number, bold title, italic serif subtitle and a thin progress rule that draws across. Bounces in and slides out.",
+  "author": {
+    "name": "Novaire"
+  },
+  "main": "grafico.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": true,
+  "stepCount": 1,
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": 1050
+    },
+    {
+      "type": "updateAction",
+      "duration": 0
+    },
+    {
+      "type": "stopAction",
+      "duration": 450
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "number": {
+        "type": "string",
+        "gddType": "single-line",
+        "title": "Chapter number",
+        "default": "02"
+      },
+      "title": {
+        "type": "string",
+        "gddType": "single-line",
+        "title": "Title",
+        "default": "Build the foundation"
+      },
+      "subtitle": {
+        "type": "string",
+        "gddType": "single-line",
+        "title": "Subtitle (optional, italic)",
+        "default": "Where every good idea starts"
+      },
+      "position": {
+        "type": "string",
+        "gddType": "select",
+        "title": "Position — type: left / center / right",
+        "enum": [
+          "left",
+          "center",
+          "right"
+        ],
+        "default": "left",
+        "gddOptions": {
+          "labels": {
+            "left": "Left",
+            "center": "Center",
+            "right": "Right"
+          }
+        }
+      },
+      "acento": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Accent colour",
+        "default": "#2e5bff"
+      },
+      "tinta": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Ink colour (text, border, shadow)",
+        "default": "#141414"
+      },
+      "superficie": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Card colour",
+        "default": "#fffaf0"
+      },
+      "look": {
+        "type": "string",
+        "gddType": "select",
+        "title": "Look — type: sticker / flat / soft",
+        "enum": [
+          "sticker",
+          "flat",
+          "soft"
+        ],
+        "default": "sticker",
+        "gddOptions": {
+          "labels": {
+            "sticker": "Sticker (tilt + hard shadow)",
+            "flat": "Flat (outline, no shadow)",
+            "soft": "Soft (no outline, soft shadow)"
+          }
+        }
+      }
+    }
+  },
+  "renderRequirements": [
+    {
+      "accessToPublicInternet": {
+        "ideal": false
+      }
+    }
+  ]
+}

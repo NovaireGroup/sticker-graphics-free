@@ -1,0 +1,113 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "pack-lower-third",
+  "version": "1.0.0",
+  "name": "Lower third · name & role",
+  "description": "White card with a hard ink shadow: small label, bold name and an italic role in your accent colour that writes itself on. Bounces in, slides out. Frame-accurate in post: the same frame on every render, also when scrubbing backwards.",
+  "author": {
+    "name": "Novaire"
+  },
+  "main": "grafico.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": true,
+  "stepCount": 1,
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": 1150
+    },
+    {
+      "type": "updateAction",
+      "duration": 0
+    },
+    {
+      "type": "stopAction",
+      "duration": 450
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "label": {
+        "type": "string",
+        "gddType": "single-line",
+        "title": "Label",
+        "default": "Guest"
+      },
+      "name": {
+        "type": "string",
+        "gddType": "single-line",
+        "title": "Name",
+        "default": "Alex Morgan"
+      },
+      "role": {
+        "type": "string",
+        "gddType": "single-line",
+        "title": "Role (italic, accent colour)",
+        "default": "Founder, Studio North"
+      },
+      "position": {
+        "type": "string",
+        "gddType": "select",
+        "title": "Position — type: bottom-left / bottom-right",
+        "enum": [
+          "bottom-left",
+          "bottom-right"
+        ],
+        "default": "bottom-left",
+        "gddOptions": {
+          "labels": {
+            "bottom-left": "Bottom left",
+            "bottom-right": "Bottom right"
+          }
+        }
+      },
+      "acento": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Accent colour",
+        "default": "#2e5bff"
+      },
+      "tinta": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Ink colour (text, border, shadow)",
+        "default": "#141414"
+      },
+      "superficie": {
+        "type": "string",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "title": "Card colour",
+        "default": "#fffaf0"
+      },
+      "look": {
+        "type": "string",
+        "gddType": "select",
+        "title": "Look — type: sticker / flat / soft",
+        "enum": [
+          "sticker",
+          "flat",
+          "soft"
+        ],
+        "default": "sticker",
+        "gddOptions": {
+          "labels": {
+            "sticker": "Sticker (tilt + hard shadow)",
+            "flat": "Flat (outline, no shadow)",
+            "soft": "Soft (no outline, soft shadow)"
+          }
+        }
+      }
+    }
+  },
+  "renderRequirements": [
+    {
+      "accessToPublicInternet": {
+        "ideal": false
+      }
+    }
+  ]
+}
